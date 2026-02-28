@@ -74,26 +74,21 @@ let isPlaying = false;
 
 // 1. YouTube API Initialization (Bulletproof Version)
 window.onYouTubeIframeAPIReady = function() {
+    console.log("YouTube API script loaded..."); // Test Log 1
     player = new YT.Player('legal-player', {
-        height: '0',
-        width: '0',
-        videoId: '7S9oYv1f5S0', // Ikaw at Ako
+        height: '200', // Make it visible for testing
+        width: '300',  // Make it visible for testing
+        videoId: 'm77mI_U-r64', 
         playerVars: {
             'autoplay': 0,
             'loop': 1,
-            'playlist': '7S9oYv1f5S0', 
-            'controls': 0,
+            'playlist': 'm77mI_U-r64', 
+            'controls': 1, // Show controls so we can click play manually to test
             'rel': 0,
-            'modestbranding': 1,
-            'origin': window.location.origin // Helps with security blocks
         },
         events: {
             'onReady': onPlayerReady,
-            'onStateChange': function(event) {
-                if (event.data === YT.PlayerState.ENDED) {
-                    player.playVideo(); // Force loop
-                }
-            }
+            'onError': onPlayerError // Add this to see if YouTube is blocking you
         }
     });
 };
@@ -103,6 +98,10 @@ function onPlayerReady(event) {
     console.log("Music Engine Ready");
 }
 
+function onPlayerError(event) {
+    console.log("YouTube Error Code: " + event.data);
+    // Error 101 or 150 means the song owner blocks API playback
+}
 // 2. Entrance Logic & Music Start
 const entranceOverlay = document.getElementById('entrance-overlay');
 const enterBtn = document.getElementById('enter-btn');
