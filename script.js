@@ -68,96 +68,80 @@ function createSparkle() {
 }
 setInterval(createSparkle, 200);
 
-let player;
-let isPlayerReady = false;
-let isPlaying = false;
 
-// 1. YouTube API Initialization (Bulletproof Version)
-window.onYouTubeIframeAPIReady = function() {
-    console.log("YouTube API script loaded..."); // Test Log 1
-    player = new YT.Player('legal-player', {
-        height: '200', // Make it visible for testing
-        width: '300',  // Make it visible for testing
-        videoId: 'm77mI_U-r64', 
-        playerVars: {
-            'autoplay': 0,
-            'loop': 1,
-            'playlist': 'm77mI_U-r64', 
-            'controls': 1, // Show controls so we can click play manually to test
-            'rel': 0,
-        },
-        events: {
-            'onReady': onPlayerReady,
-            'onError': onPlayerError // Add this to see if YouTube is blocking you
-        }
-    });
-};
-
-function onPlayerReady(event) {
-    isPlayerReady = true;
-    console.log("Music Engine Ready");
-}
-
-function onPlayerError(event) {
-    console.log("YouTube Error Code: " + event.data);
-    // Error 101 or 150 means the song owner blocks API playback
-}
-// 2. Entrance Logic & Music Start
 const entranceOverlay = document.getElementById('entrance-overlay');
 const enterBtn = document.getElementById('enter-btn');
+const music = document.getElementById("bg-music");
 const musicIcon = document.getElementById("music-icon");
+let isPlaying = false;
 
 enterBtn.addEventListener('click', () => {
     // Hide overlay
     entranceOverlay.classList.add('hidden');
     
-    // Play YouTube Music immediately
-    if (player && typeof player.playVideo === 'function') {
-        player.unMute(); // Some browsers require unMute to start audio
-        player.setVolume(70);
-        player.playVideo();
+    // Play Music
+    music.play().then(() => {
         isPlaying = true;
         musicIcon.innerText = "🎵";
-    } else {
-        // Fail-safe: if the player isn't ready yet, try again in 1 second
-        setTimeout(() => {
-            if (player) {
-                player.unMute();
-                player.playVideo();
-                isPlaying = true;
-                musicIcon.innerText = "🎵";
-            }
-        }, 1000);
-    }
+    }).catch(error => {
+        console.log("Autoplay was prevented by browser.");
+    });
     
+    // Initialize AOS after entering
     AOS.refresh();
 });
 
-// 3. Manual Music Toggle
+// 2. Toggle Music (Manual control after it's started)
 function toggleMusic() {
-    if (!player) return;
-
     if (isPlaying) {
-        player.pauseVideo();
+        music.pause();
         musicIcon.innerText = "🔇";
     } else {
-        player.playVideo();
+        music.play();
         musicIcon.innerText = "🎵";
     }
     isPlaying = !isPlaying;
 }
 
-
 /* ... keep the rest of your previous code (Countdown, Sparkles, FAQ) below ... */
 // 5. RSVP Form Submission
-document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+// document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+//     e.preventDefault();
+//     // In a real app, you would use Fetch API to send data to a spreadsheet or email
+//     alert("✨ Your royal response has been delivered to the Palace! ✨");
+//     this.reset();
+// });
+
+// --- GOOGLE SHEETS RSVP LOGIC ---
+const rsvpForm = document.getElementById('rsvp-form');
+const rsvpBtn = document.getElementById('rsvp-submit-btn');
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyOfjFrxl924hmdK5anMEAfd2vOjwYUHhfdrIyYWxftWw-SyXYCO4yFilzBIxawcxVS/exec'; // <--- Put your link here!
+
+rsvpForm.addEventListener('submit', e => {
     e.preventDefault();
-    // In a real app, you would use Fetch API to send data to a spreadsheet or email
-    alert("✨ Your royal response has been delivered to the Palace! ✨");
-    this.reset();
+    
+    // Loading state for the button
+    rsvpBtn.innerText = "Sending to the Palace...";
+    rsvpBtn.disabled = true;
+
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: new FormData(rsvpForm)
+    })
+    .then(response => {
+        // Success Message
+        alert("✨ Your royal response has been delivered to the Palace! ✨");
+        rsvpBtn.innerText = "Send Your Word";
+        rsvpBtn.disabled = false;
+        rsvpForm.reset();
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        alert("The royal messenger got lost. Please try again.");
+        rsvpBtn.innerText = "Send Your Word";
+        rsvpBtn.disabled = false;
+    });
 });
-
-
 
 const backToTopBtn = document.getElementById("backToTop");
 
@@ -182,21 +166,17 @@ const showMoreBtn = document.getElementById('show-more-btn');
 const extraPhotos = document.getElementById('extra-photos');
 
 showMoreBtn.addEventListener('click', () => {
-    // Toggle the "show" class
     extraPhotos.classList.toggle('show');
 
-    // Change button text
     if (extraPhotos.classList.contains('show')) {
         showMoreBtn.innerText = "Show Less";
-        
-        // Refresh AOS so animations trigger for new images
+
         setTimeout(() => {
             AOS.refresh();
         }, 100); 
     } else {
         showMoreBtn.innerText = "Show More Magic";
         
-        // Scroll back up to the gallery top when closing (Optional)
         document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
     }
 });
