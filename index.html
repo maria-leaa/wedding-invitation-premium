@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Royal Wedding | Alexander & Isabella</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="sparkles-container"></div>
+
+    <!-- Entrance Overlay -->
+    <div id="entrance-overlay">
+        <div class="overlay-content">
+            <p class="tagline">The Royal Invitation of Alexander & Isabella</p>
+            <button id="enter-btn">Open Invitation</button>
+        </div>
+    </div>
+
+    <!-- Music Control -->
+    <!-- <div class="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+        <audio id="bg-music" loop>
+            <source src="TJ Monterde - Ikaw at Ako (Lyrics).mp3" type="audio/mpeg">
+        </audio>
+    </div> -->
+
+    <!-- Music Control Button -->
+    <div class="music-control" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+        <!-- The invisible YouTube Player -->
+        <div id="legal-player"></div>
+    </div>
+
+
+    <!-- 1. Hero Section -->
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="2000">
+            <p class="tagline">“Once upon a time, two souls became one…”</p>
+            <h1>Alexander & Isabella</h1>
+            <p class="hero-date">June 14, 2026 • Tagaytay City</p>
+            <div id="countdown" class="countdown"></div>
+            <!-- Alternative: "Be Our Guest" -->
+            <a href="#rsvp" class="btn-gold">Be Our Guest</a>
+        </div>
+    </header>
+
+    <!-- 2. Our Love Story -->
+    <section class="story" id="story">
+        <h2 data-aos="fade-down">Our Love Story</h2>
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-content">
+                    <h3>The First Meeting</h3>
+                    <p>A chance encounter beneath city lights that changed everything. What started as friendship
+                        blossomed into something magical.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-content">
+                    <h3>The First Date</h3>
+                    <p>Filled with laughter, long walks, and the realization of a deep connection that felt like a dream
+                        come true.</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-content">
+                    <h3>The Proposal</h3>
+                    <p>A promise made under the stars at Emerald Hills to share a lifetime of adventures and a happily
+                        ever after.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. The Royal Court -->
+    <section class="court" id="court">
+        <div class="container">
+            <h2 data-aos="fade-up">The Royal Court</h2>
+            <div class="court-grid">
+                <div class="court-member" data-aos="zoom-in">
+                    <div class="img-frame">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400"
+                            alt="Maid of Honor">
+                    </div>
+                    <h3>Lady Sophia</h3>
+                    <p>Maid of Honor</p>
+                </div>
+                <div class="court-member" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="img-frame">
+                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400"
+                            alt="Best Man">
+                    </div>
+                    <h3>Lord Julian</h3>
+                    <p>Best Man</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. The Royal Entourage -->
+    <section class="entourage" id="entourage">
+        <div class="container">
+            <h2 data-aos="fade-up">The Royal Entourage</h2>
+            <div class="entourage-grid">
+                <div class="entourage-column" data-aos="fade-right">
+                    <h3>Bridesmaids</h3>
+                    <ul>
+                        <li>Lady Elena Vance</li>
+                        <li>Lady Clara Montrose</li>
+                        <li>Lady Genevieve Thorne</li>
+                        <li>Lady Beatrice Solis</li>
+                        <li>Lady Seraphina Rose</li>
+                    </ul>
+                </div>
+                <div class="entourage-column" data-aos="fade-left">
+                    <h3>Groomsmen</h3>
+                    <ul>
+                        <li>Lord Sebastian Cross</li>
+                        <li>Lord Nathaniel Drake</li>
+                        <li>Lord Cedric Thorne</li>
+                        <li>Lord Alistair Vale</li>
+                        <li>Lord Theodore Sterling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Principal Sponsors -->
+    <section class="sponsors" id="sponsors">
+        <div class="container">
+            <h2 data-aos="fade-up">The Principal Sponsors</h2>
+            <div class="sponsors-grid">
+                <div class="sponsors-column" data-aos="fade-right">
+                    <h3>Ninong</h3>
+                    <ul>
+                        <li>General Marcus Laurent</li>
+                        <li>Mayor Ricardo Santos</li>
+                        <li>Attorney Victoriano Reyes</li>
+                        <li>Doctor Alfonso Garcia</li>
+                    </ul>
+                </div>
+                <div class="sponsors-column" data-aos="fade-left">
+                    <h3>Ninang</h3>
+                    <ul>
+                        <li>Mrs. Helena Monteverde</li>
+                        <li>Judge Aurora Reyes</li>
+                        <li>Dra. Elizabeth Laurent</li>
+                        <li>Mrs. Cynthia Santos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Details Section -->
+    <section class="details" id="details">
+        <div class="detail-card" data-aos="fade-up">
+            <div class="icon">🏰</div>
+            <h3>The Ceremony</h3>
+            <p>4:00 PM | Crystal Garden Chapel</p>
+            <p>Emerald Hills Estate, Tagaytay City</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-text">View Map</a>
+        </div>
+        <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon">👑</div>
+            <h3>The Reception</h3>
+            <p>6:30 PM | The Grand Moonlight Ballroom</p>
+            <p>Emerald Hills Estate, Tagaytay City</p>
+            <a href="https://maps.google.com" target="_blank" class="btn-text">View Map</a>
+        </div>
+    </section>
+
+    <!-- 7. Photo Gallery -->
+    <!-- <section class="gallery" id="gallery">
+        <h2 data-aos="fade-up">Enchanted Moments</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600"
+                    alt="Gallery 1">
+            </div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=600"
+                    alt="Gallery 2">
+            </div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600"
+                    alt="Gallery 3">
+            </div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=600&auto=format&fit=crop"
+                    alt="The Royal Celebration">
+            </div>
+        </div>
+    </section> -->
+
+    <!-- 7. Photo Gallery -->
+    <section class="gallery" id="gallery">
+        <h2 data-aos="fade-up">Enchanted Moments</h2>
+
+        <!-- Initial Photos (Always Visible) -->
+        <div class="gallery-grid">
+            <div class="gallery-item" data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=600"
+                    alt="Gallery 1">
+            </div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&q=80&w=600"
+                    alt="Gallery 2">
+            </div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600"
+                    alt="Gallery 3">
+            </div>
+            <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://images.unsplash.com/photo-1510076857177-7470076d4098?q=80&w=600&auto=format&fit=crop"
+                    alt="Gallery 4">
+            </div>
+        </div>
+
+        <!-- Hidden Photos (Revealed on click) -->
+        <div class="gallery-grid extra-photos" id="extra-photos">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&q=80&w=600"
+                    alt="Extra 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&q=80&w=600"
+                    alt="Extra 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&q=80&w=600"
+                    alt="Extra 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=600"
+                    alt="Extra 4">
+            </div>
+        </div>
+
+        <!-- The Show More Button -->
+        <button id="show-more-btn" class="btn-gold" style="margin-top: 40px;">Show More Magic</button>
+    </section>
+
+    <!-- 8. Dress Code -->
+    <section class="dress-code" data-aos="fade-up">
+        <div class="container center-content">
+            <h2>Fairytale Formal</h2>
+            <div class="palette">
+                <div class="color-circle" style="background: #F8D7DA;" title="Blush Pink"></div>
+                <div class="color-circle" style="background: #E6C79C;" title="Champagne Gold"></div>
+                <div class="color-circle" style="background: #FFF8F0;" title="Ivory"></div>
+                <div class="color-circle" style="background: #DCC6E0;" title="Soft Lavender"></div>
+            </div>
+            <div class="code-desc">
+                <p><strong>Ladies:</strong> Pastel or soft elegant gowns</p>
+                <p><strong>Gentlemen:</strong> Formal suit or Barong Tagalog</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. Scroll of Wisdom (FAQ) -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 data-aos="fade-down">Scroll of Wisdom</h2>
+            <div class="faq-container">
+                <div class="faq-item" data-aos="fade-up">
+                    <button class="faq-question">Where shall we stable our carriages? <span
+                            class="arrow">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Complimentary parking is provided for all honored guests within the castle grounds of Emerald
+                            Hills Estate. Our royal guards will assist you upon arrival.</p>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <button class="faq-question">What is the royal gift policy? <span class="arrow">▼</span></button>
+                    <div class="faq-answer">
+                        <p>Your presence at our union is the greatest gift of all. However, should you wish to honor us
+                            with a token of your love, a contribution to our wishing well would be most appreciated as
+                            we build our happily ever after.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. RSVP Section -->
+    <section class="rsvp" id="rsvp">
+        <div class="rsvp-container" data-aos="flip-left">
+            <h2>Will You Join Our Fairytale?</h2>
+            <p>Kindly confirm by May 20, 2026</p>
+
+            <form id="rsvp-form">
+                <input type="text" placeholder="Your Full Name" required>
+
+                <input type="number" placeholder="Number of Guests Attending" min="1" max="5" required>
+
+                <select required>
+                    <option value="" disabled selected>Kindly confirm your presence</option>
+                    <option value="yes">With joy, I will celebrate with you</option>
+                    <option value="no">Regretfully, I send my warm wishes</option>
+                </select>
+
+                <textarea placeholder="Leave a heartfelt message for the bride & groom"></textarea>
+
+                <button type="submit" class="btn-gold">
+                    Send Your Word
+                </button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer>
+        <p class="initials">A & I</p>
+        <p>06 • 14 • 2026</p>
+        <p>© 2026 Alexander & Isabella. All rights reserved.</p>
+
+        <!-- Music Copyright Credit -->
+        <p class="music-credit">Music: Ikaw at Ako by TJ Monterde. For portfolio use only.</p>
+    </footer>
+
+    <button id="backToTop" title="Return to Top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

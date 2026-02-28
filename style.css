@@ -1,0 +1,536 @@
+/* Variables */
+:root {
+    --blush: #F8D7DA;
+    --gold: #E6C79C;
+    --ivory: #FFF8F0;
+    --midnight: #1F2A44;
+    --lavender: #DCC6E0;
+    --white: #ffffff;
+}
+
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--ivory);
+    color: var(--midnight);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.container { width: 90%; max-width: 1100px; margin: 0 auto; }
+
+/* Typography */
+h1, h2, .tagline, .initials {
+    font-family: 'Pinyon Script', cursive;
+}
+
+h2 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 30px;
+    color: var(--midnight);
+    text-align: center;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(31, 42, 68, 0.5), rgba(31, 42, 68, 0.5)), 
+                url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+}
+
+.hero h1 { font-size: clamp(3rem, 12vw, 7rem); color: var(--gold); margin: 10px 0; }
+.tagline { font-size: clamp(1.2rem, 4vw, 2rem); }
+.hero-date { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 3px; text-transform: uppercase; }
+
+/* Buttons */
+.btn-gold {
+    display: inline-block;
+    padding: 15px 40px;
+    background: var(--gold);
+    color: var(--midnight);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-top: 30px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-gold:hover { transform: translateY(-3px); background: var(--white); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+
+/* Timeline Section */
+.story { padding: 80px 20px; text-align: center; }
+.timeline-item h3 { 
+    font-family: 'Playfair Display', serif; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    color: var(--midnight); 
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+.timeline-content { max-width: 600px; margin: 0 auto 50px; }
+
+/* Royal Court Grid */
+.court { padding: 80px 0; background: var(--white); }
+.court-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.court-member { text-align: center; flex: 1 1 250px; max-width: 300px; }
+.img-frame {
+    width: 180px; height: 180px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.img-frame img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.img-frame:hover img { transform: scale(1.1); }
+
+/* Details Cards */
+.details { 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    flex-wrap: wrap; 
+    background: var(--lavender); 
+    padding: 100px 20px; 
+}
+.detail-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 400px;
+    flex: 1 1 300px;
+    text-align: center;
+}
+.detail-card .icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+.detail-card h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+.btn-text { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 15px; }
+
+/* Gallery */
+.gallery { padding: 80px 0; text-align: center; }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px 5%;
+}
+.gallery-item { height: 300px; overflow: hidden; border-radius: 10px; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; cursor: pointer; }
+.gallery-item:hover img { transform: scale(1.1) rotate(1deg); }
+
+/* FAQ Accordion */
+.faq { padding: 80px 0; background: var(--white); }
+.faq-container { max-width: 800px; margin: 0 auto; text-align: left; }
+.faq-item { border-bottom: 1px solid var(--gold); }
+.faq-question {
+    width: 100%; background: none; border: none; padding: 25px 10px;
+    font-family: 'Playfair Display', serif; font-size: 1.2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; color: var(--midnight); text-align: left;
+}
+.faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s ease; padding: 0 10px; }
+.faq-answer p { padding-bottom: 20px; color: #666; font-size: 0.95rem; }
+.faq-item.active .faq-answer { max-height: 200px; }
+.faq-item.active .arrow { transform: rotate(180deg); }
+
+/* --- 9. RSVP SECTION (FINAL) --- */
+.rsvp { 
+    padding: 100px 20px; 
+    background-color: var(--ivory); 
+}
+
+.rsvp-container {
+    max-width: 650px;
+    margin: 0 auto;
+    background: var(--midnight);
+    color: var(--white);
+    padding: 60px 40px; /* Increased padding for a more luxurious feel */
+    border-radius: 20px;
+    border: 2px solid var(--gold);
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Added shadow for depth */
+}
+
+.rsvp-container h2 { 
+    color: var(--gold); 
+    margin-bottom: 10px; 
+    font-size: clamp(2.5rem, 6vw, 4rem); 
+}
+
+.rsvp-container p {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* The Form Layout Fix */
+#rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* This creates the perfect spacing between all fields */
+}
+
+/* Styling for all Input Fields */
+input, select, textarea {
+    width: 100%; 
+    padding: 15px; /* Taller fields are easier to use */
+    border-radius: 10px; 
+    border: 1px solid var(--gold);
+    background: rgba(255,255,255,0.08); 
+    color: white; 
+    font-family: 'Montserrat', sans-serif; /* Forces correct font in textarea */
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Fix for Select dropdown background */
+select option {
+    background: var(--midnight);
+    color: white;
+}
+
+/* Message box specific styling */
+textarea { 
+    height: 120px; 
+    resize: vertical; /* Allows users to expand down but not sideways */
+}
+
+/* Hover & Focus Effects */
+input:focus, select:focus, textarea:focus {
+    border-color: var(--white);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(230, 199, 156, 0.3); /* Subtle gold glow */
+}
+
+/* Placeholder text color */
+::placeholder { 
+    color: rgba(255,255,255,0.6); 
+    font-weight: 300;
+}
+
+/* Submit Button Placement */
+#rsvp-form .btn-gold {
+    align-self: center; /* Centers the button inside the form */
+    margin-top: 10px;
+    min-width: 220px;
+    cursor: pointer;
+}
+
+/* Floating Elements */
+/* .music-control {
+    position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+    background: var(--gold); width: 50px; height: 50px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+} */
+
+#sparkles-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+.sparkle { position: absolute; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; animation: float 4s infinite linear; }
+
+@keyframes float {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* Footer */
+footer { padding: 60px 20px; background: var(--midnight); color: var(--white); text-align: center; }
+.initials { font-size: 3rem; color: var(--gold); margin-bottom: 10px; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .court-grid { gap: 20px; }
+    .hero { padding: 0 15px; }
+    .rsvp-container { padding: 30px 20px; }
+}
+
+/* Entrance Overlay */
+#entrance-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: var(--midnight); /* Dark royal blue */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 1.5s ease-out, visibility 1.5s;
+    text-align: center;
+}
+
+#entrance-overlay.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.overlay-content p {
+    color: var(--gold);
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#enter-btn {
+    padding: 15px 40px;
+    background: var(--gold);
+    color: var(--midnight);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+#enter-btn:hover {
+    background: var(--white);
+    transform: scale(1.05);
+}
+
+/* Fix for Dress Code Section */
+.dress-code {
+    padding: 100px 20px;
+    text-align: center; /* Centers the title */
+    background-color: var(--white);
+}
+
+.dress-code .code-desc {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the Ladies/Gentlemen text */
+    gap: 10px;
+}
+
+.dress-code .code-desc p {
+    font-size: 1.1rem;
+    color: var(--midnight);
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Royal Entourage Styling */
+.entourage {
+    padding: 100px 20px;
+    background-color: var(--ivory);
+    text-align: center;
+}
+
+.entourage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns on desktop */
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.entourage-column h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--midnight);
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.entourage-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.entourage-column li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    color: #555;
+    transition: 0.3s;
+}
+
+.entourage-column li:hover {
+    color: var(--gold);
+    transform: scale(1.05);
+}
+
+/* Mobile Responsiveness for Entourage */
+@media (max-width: 768px) {
+    .entourage-grid {
+        grid-template-columns: 1fr; /* Stacks columns on mobile */
+        gap: 40px;
+    }
+    
+    .dress-code h2, .entourage h2 {
+        font-size: 3rem; /* Slightly smaller titles for mobile screens */
+    }
+}
+
+/* Principal Sponsors Section */
+.sponsors {
+    padding: 100px 20px;
+    background-color: var(--white); /* Or var(--ivory) if you want to alternate colors */
+    text-align: center;
+}
+
+.sponsors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.sponsors-column h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold); /* Using gold for sponsors to show high respect */
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.sponsors-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sponsors-column li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; /* Slightly larger text for sponsors */
+    margin-bottom: 15px;
+    color: var(--midnight);
+    font-weight: 400;
+}
+
+/* Optional: Adds a small decorative divider between names */
+.sponsors-column li:not(:last-child):after {
+    content: "•";
+    display: block;
+    color: var(--gold);
+    margin-top: 10px;
+    font-size: 0.8rem;
+}
+
+/* Mobile Responsiveness for Sponsors */
+@media (max-width: 768px) {
+    .sponsors-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* .music-credit {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-top: 15px;
+    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
+} */
+
+
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9999;
+    
+    /* Aesthetic Styling */
+    width: 45px;
+    height: 45px;
+    background-color: var(--gold); /* #E6C79C */
+    color: var(--midnight);        /* #1F2A44 */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+    /* Initial State (Hidden) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Arrow Icon size */
+#backToTop svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Show state when scrolling */
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Hover Effect */
+#backToTop:hover {
+    background-color: var(--midnight);
+    color: var(--gold);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Adjust for Mobile */
+@media (max-width: 768px) {
+    #backToTop {
+        width: 40px;
+        height: 40px;
+        bottom: 20px;
+        left: 20px;
+    }
+}
+
+/* Initially hide the extra photos */
+.extra-photos {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+    margin-top: 0; /* Remove gap when hidden */
+}
+
+/* Class to be added via JavaScript */
+.extra-photos.show {
+    max-height: 2000px; /* Large enough to fit content */
+    opacity: 1;
+    margin-top: 15px; /* Restores gap between grids */
+}
+
+/* Ensure the button looks consistent */
+#show-more-btn {
+    transition: transform 0.3s ease;
+}
+
+
+/* Hide the YouTube Frame completely */
+#legal-player {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
